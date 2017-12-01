@@ -1,0 +1,2 @@
+{"mov":["B8","8B","89","C7","BE","BF"],"add":["01","03","83"],"sub":["29","2B","83"],"lodsb":["AC"],"stosb":["AA"],"cld":["FC"],"std":["FD"],"movsb":["A4"],"scasb":["AE"],"rep":["F3"],"repe":["F3"],"repne":["F2"],"repnz":["F2"]}
+
