@@ -4,6 +4,7 @@
 import sys
 import json
 
+# this generates  symbol table for the given assembly code.  
 class symbolTable:
     def __init__(self):
         self.address=0
@@ -14,7 +15,7 @@ class symbolTable:
         self.branch=["jmp","loop"]
         self.reg=["eax","ax","al","ah","ecx","cx","cl","ch","edx","dx","dl","dh","ebx","bx","bl","bh","esp","sp","ebp","bp","esi","si","edi","di"]
         self.ins=["mov","add","sub"]
-    def get_size(self,val,_type):
+    def get_size(self,val,_type):             #gets the size of type of variable used    
         if _type=="dd" or _type=="resd":
             val=val.split(',')
             val=map(int,val)
@@ -27,7 +28,7 @@ class symbolTable:
             val=val.split(',')
             val=map(float,val)
             return len(val)*8
-    def get_value(self,val,_type):
+    def get_value(self,val,_type):           #gets the value of the variable used
         if _type=="dd":
             val=''.join(val)
             val=val.split(',')
@@ -59,7 +60,7 @@ class symbolTable:
             
     def add(self,a,x):
         self.symbol[a]=x
-    def validate(self,x):
+    def validate(self,x):               #validation
         if len(x)>2:
             if x[1] in self.types and x[0] not in self.symbol and self.address==0:
                 size=self.get_size(' '.join(x[2:]),x[1])
@@ -95,6 +96,8 @@ class symbolTable:
     def display(self):
         print self.symbol
 
+
+# this generates the literal table for the assembly code
 class literal_table:
     def __init__(self):
         self.literal={}
@@ -110,6 +113,9 @@ class eflags:
     def display(self):
         print self.flags
 
+
+
+# this generates the opcode table for the assembly code.
 class opcode_table:
     def __init__(self):
         self.address=0
